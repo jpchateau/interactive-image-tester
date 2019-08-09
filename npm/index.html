@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>.interactive-image {margin: auto; width: 1280px; height: 800px;}</style>
+    <link rel="stylesheet" href="node_modules\interactiveimagejs\dist\interactive-image.min.css" />
+</head>
+
+<body>
+    <div id="my-interactive-image1" style="background:url('assets/star-wars1.jpg');"></div>
+
+    <script src="node_modules\jquery\dist\jquery.min.js"></script>
+    <script src="node_modules\interactiveimagejs\dist\interactive-image.min.js"></script>
+
+    <script>
+        var items1 = [
+            {
+			    type: "text",
+                title: "BB-8",
+                description: "Le plus stylé des droïdes !",
+                position: {
+                    left: 100,
+                    top: 100
+                }
+            }
+        ];
+
+        $(document).ready(function() {
+            $('#my-interactive-image1').interactiveImage(items1);
+        });
+    </script>
+</body>
+</html>

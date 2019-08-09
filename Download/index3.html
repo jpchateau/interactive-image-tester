@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="interactive-image.min.css" />
+	<style>.interactive-image {margin: auto; width: 1280px; height: 800px;}</style>
+</head>
+<body>
+    <div id="my-interactive-image1" style="background:url('assets/star-wars1.jpg');"></div>
+	<br /><br />
+	<div id="my-interactive-image2" style="background:url('assets/star-wars2.jpg');"></div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="interactive-image.min.js"></script>
+
+    <script>
+        var items1 = [
+            {
+			    type: "text",
+                title: "BB-8",
+                description: "Le plus stylé des droïdes !",
+                position: {
+                    left: 100,
+                    top: 100
+                }
+            },
+			{
+			    type: "picture",
+				caption: "BB-8 in action!",
+				path: "http://especiais.ne10.uol.com.br/starwars/wp-content/uploads/2015/12/BB-8-011-770x429.jpg",
+                position: {
+                    left: 300,
+                    top: 100
+                }
+            },
+			{
+			    type: "audio",
+				caption: "BB-8 beep",
+				path: "assets/bb8.mp3",
+                position: {
+                    left: 100,
+                    top: 300
+                }
+            },
+			{
+			    type: "video",
+				caption: "Ocean",
+				path: "assets/ocean.mp4",
+                position: {
+                    left: 300,
+                    top: 300
+                }
+            },
+			{
+			    type: "provider",
+				providerName: "youtube",
+				parameters: {
+				    videoId: "_RWWKFqv7EM"
+				},
+                position: {
+                    left: 500,
+                    top: 300
+                }
+            }
+        ];
+		
+		var items2 = [
+            {
+			    type: "text",
+                title: "BB-8",
+                description: "Le plus stylé des droïdes !",
+                position: {
+                    left: 100,
+                    top: 100
+                }
+            }
+		];
+
+        $(document).ready(function() {
+            $('#my-interactive-image1').interactiveImage(items1);
+			$('#my-interactive-image2').interactiveImage(items2);
+        });
+    </script>
+</body>
+</html>
