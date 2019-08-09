@@ -1,0 +1,8 @@
+{
+  "name": "interactive-image-tester",
+  "version": "1.0.0",
+  "dependencies": {
+    "interactiveimagejs": "2.4.0",
+    "jquery": "3.4.1"
+  }
+}
