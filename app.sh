@@ -1,79 +1,97 @@
 #!/bin/bash
 
-WORKDIR=./Tester
+# Configuration
 INTERACTIVE_IMAGE_VERSION="2.4.0"
+LATEST_JQUERY_VERSION="3.4.1"
 JQUERY_VERSIONS=("1.7.2" "1.12.4" "2.2.4" "3.4.1")
 
-# 1. Prepare directories
+# 1. Setup
 
-mkdir -p $WORKDIR/Download
-mkdir -p $WORKDIR/NPM
-mkdir -p $WORKDIR/Yarn
+WORKDIR=./Tester
+WORKDIR_DOWNLOAD=$WORKDIR/Download
+WORKDIR_NPM=$WORKDIR/Npm
+WORKDIR_YARN=$WORKDIR/Yarn
 
-rm -rf $WORKDIR/Download/*
-rm -rf $WORKDIR/NPM/*
-rm -rf $WORKDIR/Yarn/*
+rm -rf $WORKDIR/*
+mkdir $WORKDIR_DOWNLOAD
+mkdir $WORKDIR_NPM
+mkdir $WORKDIR_YARN
+
+touch package.json
+echo "{\"dependencies\": {\"interactiveimagejs\": \"$INTERACTIVE_IMAGE_VERSION\", \"jquery\": \"$LATEST_JQUERY_VERSION\"}}" > package.json
 
 # 2. Download
 
-cd $WORKDIR/Download
+echo "Generating Download directory..."
+
+cd $WORKDIR_DOWNLOAD
 wget https://github.com/jpchateau/Interactive-Image/archive/v$INTERACTIVE_IMAGE_VERSION.zip
 unzip v$INTERACTIVE_IMAGE_VERSION.zip
 cp -R Interactive-Image-$INTERACTIVE_IMAGE_VERSION/dist/* ./
 rm -rf Interactive-Image-$INTERACTIVE_IMAGE_VERSION v$INTERACTIVE_IMAGE_VERSION.zip
-cd ../..
-
-echo "Generating Download directory..."
+cp -R ../../Template/assets ./
 
 CSS_FILE="interactive-image.min.css"
 JS_FILE="interactive-image.min.js"
-JQUERY_FILE_START="https://ajax.googleapis.com/ajax/libs/jquery/"
-JQUERY_FILE_END="/jquery.min.js"
-
-cp -R ./Template/assets $WORKDIR/Download
+JQUERY_FILE_START="https:\\/\\/ajax.googleapis.com\\/ajax\\/libs\\/jquery\\/"
+JQUERY_FILE_END="\\/jquery.min.js"
 
 for INDEX in ${!JQUERY_VERSIONS[*]}
 do
     VERSION="${JQUERY_VERSIONS[$INDEX]}"
     JQUERY_FILE_VERSION=$JQUERY_FILE_START$VERSION$JQUERY_FILE_END
 
-    echo $JQUERY_FILE_VERSION
-
-    cp ./Template/index.html $WORKDIR/Download/index$VERSION.html
-
-    sed -i 's/CSSFILE/'$CSS_FILE'/g' $WORKDIR/Download/index$VERSION.html
-    sed -i 's/JSFILE/'$JS_FILE'/g' $WORKDIR/Download/index$VERSION.html
-    sed -i 's/JQUERYFILE/'$JQUERY_FILE_VERSION'/g' $WORKDIR/Download/index$VERSION.html
+    cp ../../Template/index.html ./index$VERSION.html
+    sed -i 's/CSSFILE/'$CSS_FILE'/g' ./index$VERSION.html
+    sed -i 's/JSFILE/'$JS_FILE'/g' ./index$VERSION.html
+    sed -i 's/JQUERYFILE/'$JQUERY_FILE_VERSION'/g' ./index$VERSION.html
 done
+
+cd ../..
 
 # 3. NPM
 
-CSS_FILE="node_modules\\interactiveimagejs\\dist\\interactive-image.min.css"
-JS_FILE="node_modules\interactiveimagejs\dist\interactive-image.min.js"
-JQUERY_FILE="node_modules\jquery\dist\jquery.min.js"
+echo "Generating Npm directory..."
 
-cp -R ./Template/assets $WORKDIR/NPM
-cp ./Template/index.html $WORKDIR/NPM/
-cp ./Template/package.json $WORKDIR/NPM/
-cd $WORKDIR/NPM
+CSS_FILE="node_modules\\\interactiveimagejs\\\dist\\\interactive-image.min.css"
+JS_FILE="node_modules\\\interactiveimagejs\\\dist\\\interactive-image.min.js"
+JQUERY_FILE="node_modules\\\jquery\\\dist\\\jquery.min.js"
+
+cd $WORKDIR_NPM
+
+cp -R ../../Template/assets ./
+cp ../../Template/index.html ./
+cp ../../package.json ./
+
+echo "npm version: "
 npm -v
 npm install
-cd ../..
 
-sed -i 's/CSSFILE/'$CSS_FILE'/g' $WORKDIR/NPM/index.html
-sed -i 's/JSFILE/'$JS_FILE'/g' $WORKDIR/NPM/index.html
-sed -i 's/JQUERYFILE/'$JQUERY_FILE'/g' $WORKDIR/NPM/index.html
+sed -i 's/CSSFILE/'$CSS_FILE'/g' ./index.html
+sed -i 's/JSFILE/'$JS_FILE'/g' ./index.html
+sed -i 's/JQUERYFILE/'$JQUERY_FILE'/g' ./index.html
+
+cd ../..
 
 # 4. Yarn
 
-cp -R ./Template/assets $WORKDIR/Yarn
-cp ./Template/index.html $WORKDIR/Yarn/
-cp ./Template/package.json $WORKDIR/Yarn/
-cd $WORKDIR/Yarn
+echo "Generating Yarn directory..."
+
+cd $WORKDIR_YARN
+
+cp -R ../../Template/assets ./
+cp ../../Template/index.html ./
+cp ../../package.json ./
+
+echo "Yarn version: "
 yarn -v
 yarn install
-cd ../..
 
-sed -i 's/CSSFILE/'$CSS_FILE'/g' $WORKDIR/Yarn/index.html
-sed -i 's/JSFILE/'$JS_FILE'/g' $WORKDIR/Yarn/index.html
-sed -i 's/JQUERYFILE/'$JQUERY_FILE'/g' $WORKDIR/Yarn/index.html
+sed -i 's/CSSFILE/'$CSS_FILE'/g' ./index.html
+sed -i 's/JSFILE/'$JS_FILE'/g' ./index.html
+sed -i 's/JQUERYFILE/'$JQUERY_FILE'/g' ./index.html
+
+# End
+
+cd ../..
+rm package.json
