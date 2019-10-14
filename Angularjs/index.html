@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+        .interactive-image {
+            margin: auto;
+            width: 800px;
+            height: 600px;
+            background-image: url('https://www.roomsketcher.com/wp-content/uploads/2015/12/RoomSketcher-3D-Floor-Plan_800x600.jpg');
+        }
+    </style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<script src="app.js"></script>
+
+	<link href="https://cdn.jsdelivr.net/npm/interactiveimagejs@2.5.0/dist/interactive-image.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+<!-- msg payload test -->
+<div ng-app="myApp" ng-controller="myCtrl">
+    <p ng-bind="temperature"></p>
+	
+	<br><br>
+	<button ng-click="loaded()">Loaded</button>
+	
+	<br><br>
+	
+	<div id="my-interactive-image"></div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<script>
+	var items = [
+		{
+			type: "text",
+			title: "T Sensor",
+			description: 'temperature: <p ng-bind="temperature"></p>',
+			position: {
+				left: 300,
+				top: 50
+			},
+			link: {
+				url: "#",
+				label: "View more >"
+			}
+		}
+	];
+
+	var options = {
+		debug: true,
+		allowHtml: true,
+		shareBox: false
+	};
+
+	$(document).ready(function() {
+		$("#my-interactive-image").interactiveImage(items, options);
+	});
+</script>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/interactiveimagejs@2.5.0/dist/interactive-image.js"></script>
+	
+</body>
+</html> 
