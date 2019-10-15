@@ -50,15 +50,19 @@
 		allowHtml: true,
 		shareBox: false
 	};
+	
+	var timer = function() {
+		setTimeout(function() {
+			var scope = angular.element(document.getElementById("myDiv")).scope();
+			scope.$apply(function() {
+				scope.afterRendering($('#my-interactive-image'));
+			});
+		}, 500);
+	};
 
 	$(document).ready(function() {
 		$("#my-interactive-image").interactiveImage(items, options);
-		setTimeout(function() {
-			var scope = angular.element(document.getElementById("myDiv")).scope();
-			scope.$apply(function () {
-				scope.loaded();
-			});
-		}, 1000);
+		timer();
 	});
 </script>
 
