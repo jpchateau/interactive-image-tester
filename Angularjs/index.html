@@ -20,13 +20,8 @@
 <body>
 
 <!-- msg payload test -->
-<div ng-app="myApp" ng-controller="myCtrl">
-    <p ng-bind="temperature"></p>
-	
-	<br><br>
-	<button ng-click="loaded()">Loaded</button>
-	
-	<br><br>
+<div id="myDiv" ng-app="myApp" ng-controller="myCtrl">
+    <p ng-bind="temperature"></p><br><br>
 	
 	<div id="my-interactive-image"></div>
 </div>
@@ -58,6 +53,12 @@
 
 	$(document).ready(function() {
 		$("#my-interactive-image").interactiveImage(items, options);
+		setTimeout(function() {
+			var scope = angular.element(document.getElementById("myDiv")).scope();
+			scope.$apply(function () {
+				scope.loaded();
+			});
+		}, 1000);
 	});
 </script>
 
