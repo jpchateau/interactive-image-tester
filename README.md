@@ -1,13 +1,13 @@
 # Interactive Image Tester
 
 Tested features:
-* text
-* picture
-* audio (mp3)
-* video (mp4)
-* provider (youtube)
-
-Sharebox is enabled.
+* Text item
+* Picture item
+* Audio item (mp3)
+* Video item (mp4)
+* Provider item (youtube)
+* Multiple instances
+* Sharebox
 
 ## Download
 
@@ -16,8 +16,8 @@ Sharebox is enabled.
 Supported jQuery versions:
 
 * jquery 1.7.2 (minimum version)
-* jquery 1.12.4
-* jquery 2.2.4
+* jquery 1.12.4 (latest 1.x version)
+* jquery 2.2.4 (latest 2.x version)
 * jquery 3.4.1 (latest version)
 
 ## NPM
@@ -28,7 +28,6 @@ Supported jQuery versions:
 
 *Installation via Yarn package manager.*
 
-
 ## Requirements
 
 In order to work, these tools are required:
@@ -37,9 +36,13 @@ In order to work, these tools are required:
 * npm
 * yarn
 
-
 ## Usage
+
+Execute the script.
 
 ```bash
 $ ./app.sh
 ```
+
+The results of the different installations are located in the `installations` directory.  
+Browse them and open the `index.html` files in your browser.
