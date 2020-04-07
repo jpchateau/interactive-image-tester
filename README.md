@@ -1,13 +1,15 @@
 # Interactive Image Tester
 
+The aim of this project is to test [Interactive Image](https://github.com/jpchateau/Interactive-Image) against different contexts.
+
 Tested features:
 * Text item
 * Picture item
 * Audio item (mp3)
 * Video item (mp4)
-* Provider item (youtube)
+* Provider item (Youtube)
 * Multiple instances
-* Sharebox
+* Different options (share box, sticky items, HTML markup)
 
 ## Download
 
@@ -30,7 +32,6 @@ Supported jQuery versions:
 
 ## Requirements
 
-In order to work, these tools are required:
 * wget
 * unzip
 * npm
@@ -38,7 +39,7 @@ In order to work, these tools are required:
 
 ## Usage
 
-Execute the script.
+Execute the script:
 
 ```bash
 $ ./app.sh

@@ -19,7 +19,7 @@
             {
 			    type: "text",
                 title: "BB-8",
-                description: "Le plus stylé des droïdes !",
+                description: "Le plus stylé des <b>droïdes</b> !",
                 position: {
                     left: 100,
                     top: 100
@@ -64,12 +64,20 @@
                     top: 300
                 }
             }
-        ];		
+        ];
+
+        var options1 = {
+            allowHtml: true
+        };
+
+        var options2 = {
+            shareBox: false
+        };
 
         $(document).ready(function() {
 		    var items2 = JSON.parse(JSON.stringify(items1));
-            $('#my-interactive-image1').interactiveImage(items1);
-			$('#my-interactive-image2').interactiveImage(items2);
+            $('#my-interactive-image1').interactiveImage(items1, options1);
+			$('#my-interactive-image2').interactiveImage(items2, options2);
         });
     </script>
 </body>
