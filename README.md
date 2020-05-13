@@ -15,12 +15,12 @@ Tested features:
 
 *Installation by downloading files from Github.*
 
-Supported jQuery versions:
+Tested jQuery versions:
 
 * jquery 1.7.2 (minimum version)
 * jquery 1.12.4 (latest 1.x version)
 * jquery 2.2.4 (latest 2.x version)
-* jquery 3.4.1 (latest version)
+* jquery 3.5.1 (latest version)
 
 ## NPM
 
