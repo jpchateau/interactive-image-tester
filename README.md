@@ -47,3 +47,10 @@ $ ./app.sh
 
 The results of the different installations are located in the `installations` directory.  
 Browse them and open the `index.html` files in your browser.
+
+## Frameworks
+
+**Interactive Image** can be used with different frameworks.  
+Browse the `frameworks` directory to see how to use the jQuery plugin with:
+* Angularjs
+* Symfony 5.x with Webpack Encore
