@@ -48,6 +48,13 @@ $ ./app.sh
 The results of the different installations are located in the `installations` directory.  
 Browse them and open the `index.html` files in your browser.
 
+In order to test a version of the package that is still not published:
+
+```bash
+$ sudo npm link # in the package folder before to execute the pre-release script.
+$ ./pre-release.sh
+```
+
 ## Frameworks
 
 **Interactive Image** can be used with different frameworks.  
