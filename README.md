@@ -22,6 +22,11 @@ Tested jQuery versions:
 * jquery 2.2.4 (latest 2.x version)
 * jquery 3.5.1 (latest version)
 
+## CDN
+
+* jsDelivr
+* UNPKG
+
 ## NPM
 
 *Installation via npm package manager.*
